@@ -23,6 +23,21 @@
 
 ---
 
+## 🎬 Demo Video
+
+> 📹 **[Watch the 2-Minute Demo Video Here](https://drive.google.com/file/d/17wous95IKcjrc6b8XGlvh9ZjAPhRy4Z1/view?usp=sharing)**
+
+### 5-Minute Demo Script
+
+1. **[0:00-0:30] Intro** — Show the problem, introduce AttentionX
+2. **[0:30-1:30] Upload & Processing** — Upload a video, show the AI pipeline  
+3. **[1:30-2:30] Dashboard** — Attention heatmap, virality scores, audio analysis
+4. **[2:30-3:30] Clips & Hooks** — Browse segments, generate hooks in different styles
+5. **[3:30-4:30] Remix Mode** — Persona adapter + platform optimization for all 4 platforms
+6. **[4:30-5:00] Story Builder** — Combine clips into narrative, export
+
+---
+
 ## 🎯 Problem Statement
 
 Mentors, educators, and creators produce hours of high-value, long-form video content. However, modern audiences consume content in **60-second bursts**. Valuable "golden nuggets" of wisdom are often buried in 60-minute videos, making them inaccessible.
@@ -217,21 +232,6 @@ The **Viral Moment Prediction Engine** uses a weighted multi-signal approach:
 | Content Novelty | 10% | Contrarian/unique statements score higher |
 
 **Formula:** `Virality Score = Σ(weight_i × signal_i) × 100`
-
----
-
-## 🎬 Demo Video
-
-> 📹 **[Watch the 2-Minute Demo Video Here](https://drive.google.com/file/d/17wous95IKcjrc6b8XGlvh9ZjAPhRy4Z1/view?usp=sharing)**
-
-### 5-Minute Demo Script
-
-1. **[0:00-0:30] Intro** — Show the problem, introduce AttentionX
-2. **[0:30-1:30] Upload & Processing** — Upload a video, show the AI pipeline  
-3. **[1:30-2:30] Dashboard** — Attention heatmap, virality scores, audio analysis
-4. **[2:30-3:30] Clips & Hooks** — Browse segments, generate hooks in different styles
-5. **[3:30-4:30] Remix Mode** — Persona adapter + platform optimization for all 4 platforms
-6. **[4:30-5:00] Story Builder** — Combine clips into narrative, export
 
 ---
 
