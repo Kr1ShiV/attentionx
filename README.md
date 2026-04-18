@@ -17,6 +17,12 @@
 
 ---
 
+### 🌐 Live Deployment
+> **Try the fully functional app here:** **[https://attentionx.onrender.com](https://attentionx.onrender.com)**  
+> *(No local installation required. Evaluators can instantly test the AI video processing, virality heatmaps, and hook generation engine).*
+
+---
+
 ## 🎯 Problem Statement
 
 Mentors, educators, and creators produce hours of high-value, long-form video content. However, modern audiences consume content in **60-second bursts**. Valuable "golden nuggets" of wisdom are often buried in 60-minute videos, making them inaccessible.
