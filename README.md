@@ -25,7 +25,7 @@
 
 ## 🎬 Demo Video
 
-> 📹 **[Watch the 4-Minute Demo Video Here](https://drive.google.com/file/d/17wous95IKcjrc6b8XGlvh9ZjAPhRy4Z1/view?usp=sharing)**
+> 📹 **[Watch the 5-Minute Demo Video Here (Real AI in Action)](https://drive.google.com/file/d/1XpVHsQKixiMMe3g5QMdT2_Qx1hJcF-uh/view?usp=sharing)**
 
 ---
 
