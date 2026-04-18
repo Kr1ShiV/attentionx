@@ -662,36 +662,32 @@ Return ONLY valid JSON (no markdown, no backticks):
 
 Be very accurate with timing. Include ALL spoken content. Estimate emotion from tone and word choice.`;
 
-    // Try each model with retry on rate limit
+    // Try each model (fail-fast if rate limited for hackathon purposes)
     for (const modelName of models) {
-        for (let attempt = 0; attempt < 3; attempt++) {
-            try {
-                console.log(`🤖 Trying ${modelName} (attempt ${attempt + 1})...`);
-                const model = genAI.getGenerativeModel({ model: modelName });
-                const result = await model.generateContent([
-                    prompt,
-                    { inlineData: { mimeType, data: base64 } },
-                ]);
+        try {
+            console.log(`🤖 Trying ${modelName}...`);
+            const model = genAI.getGenerativeModel({ model: modelName });
+            
+            // Add abort controller so it doesn't hang forever
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second absolute timeout
 
-                const raw = result.response.text().trim();
-                const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-                const parsed = JSON.parse(cleaned);
-                console.log(`✅ ${modelName} transcribed ${parsed.sentences?.length || 0} sentences`);
-                return parsed;
-            } catch (e) {
-                const msg = e.message || '';
-                console.warn(`⚠️  ${modelName} attempt ${attempt + 1}: ${msg.substring(0, 80)}`);
-                
-                // If rate limited, wait and retry
-                if (msg.includes('429') || msg.includes('quota')) {
-                    const waitSec = Math.min(60, (attempt + 1) * 20);
-                    console.log(`⏳ Rate limited. Waiting ${waitSec}s before retry...`);
-                    await delay(waitSec * 1000);
-                } else {
-                    // Non-rate-limit error, try next model
-                    break;
-                }
-            }
+            const result = await model.generateContent([
+                prompt,
+                { inlineData: { mimeType, data: base64 } },
+            ], { requestOptions: { signal: controller.signal } });
+
+            clearTimeout(timeoutId);
+
+            const raw = result.response.text().trim();
+            const cleaned = raw.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+            const parsed = JSON.parse(cleaned);
+            console.log(`✅ ${modelName} transcribed ${parsed.sentences?.length || 0} sentences`);
+            return parsed;
+        } catch (e) {
+            const msg = e.message || '';
+            console.warn(`⚠️  ${modelName} failed: ${msg.substring(0, 80)}`);
+            // Don't wait 60 seconds! Just let it loop to the next model instantly or fallback.
         }
     }
 
