@@ -251,7 +251,7 @@ The **Viral Moment Prediction Engine** uses a weighted multi-signal approach:
 
 ## 👥 Team
 
-Built for the **AttentionX AI Hackathon**.
+Built by Krishiv Gupta for the **AttentionX AI Hackathon**.
 
 ---
 
