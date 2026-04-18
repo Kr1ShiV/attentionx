@@ -254,7 +254,7 @@ The **Viral Moment Prediction Engine** uses a weighted multi-signal approach:
 
 ## 👥 Team
 
-Built for the **AttentionX AI Hackathon** by UnsaidTalks.
+Built for the **AttentionX AI Hackathon**.
 
 ---
 
@@ -266,7 +266,7 @@ MIT License — feel free to use, modify, and distribute.
 
 <div align="center">
 
-**Built with ❤️ and AI for the AttentionX Hackathon**
+**Built for the AttentionX Hackathon**
 
 ⚡ **AttentionX** — *Turn Hours Into Viral Moments*
 
