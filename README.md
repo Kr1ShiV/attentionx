@@ -216,7 +216,7 @@ The **Viral Moment Prediction Engine** uses a weighted multi-signal approach:
 
 ## 🎬 Demo Video
 
-> 📹 [Watch the Demo Video](#) <!-- Add Google Drive link here -->
+> 📹 **[Watch the 2-Minute Demo Video Here](https://drive.google.com/file/d/17wous95IKcjrc6b8XGlvh9ZjAPhRy4Z1/view?usp=sharing)**
 
 ### 5-Minute Demo Script
 
