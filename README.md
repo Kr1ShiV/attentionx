@@ -11,7 +11,7 @@
 [![Gemini AI](https://img.shields.io/badge/Gemini-AI%20Powered-4285F4?style=flat-square&logo=google)](https://ai.google.dev)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-[Live Demo](#demo) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Quick Start](#-quick-start) • [Architecture](#-architecture)
+[Live Demo](https://attentionx.onrender.com) • [Features](#features) • [Tech Stack](#tech-stack) • [Quick Start](#quick-start) • [Architecture](#architecture)
 
 </div>
 
@@ -33,7 +33,7 @@ Mentors, educators, and creators produce hours of high-value, long-form video co
 
 ---
 
-## 🚀 Features
+## <a id="features"></a>🚀 Features
 
 ### Core Engine
 | Feature | Description | Status |
@@ -85,7 +85,7 @@ Convert the same clip into platform-optimized formats:
 
 ---
 
-## 🛠️ Tech Stack
+## <a id="tech-stack"></a>🛠️ Tech Stack
 
 ### Backend
 | Technology | Purpose |
@@ -109,7 +109,7 @@ Convert the same clip into platform-optimized formats:
 
 ---
 
-## 🚀 Quick Start
+## <a id="quick-start"></a>🚀 Quick Start
 
 ### Prerequisites
 - Node.js (v18+)
@@ -164,7 +164,7 @@ attentionx/
 
 ---
 
-## 🏗️ Architecture
+## <a id="architecture"></a>🏗️ Architecture
 
 ```
 ┌────────────────────────────────────────────────────────────┐
