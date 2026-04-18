@@ -1,0 +1,17 @@
+{
+    "name": "attentionx",
+    "version": "1.0.0",
+    "description": "AttentionX - AI Content Intelligence Engine",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js",
+        "backend": "cd backend && python main.py"
+    },
+    "dependencies": {
+        "@google/generative-ai": "^0.24.1",
+        "express": "^4.21.0",
+        "http-proxy-middleware": "^3.0.0",
+        "multer": "^1.4.5-lts.1"
+    }
+}
