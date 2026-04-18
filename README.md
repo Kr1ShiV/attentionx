@@ -82,12 +82,6 @@ Convert the same clip into platform-optimized formats:
 - 📸 **Instagram Reel** — Visual, punchy, trend-aware + 15 hashtags
 - ▶️ **YouTube Short** — Informative, searchable, value-packed
 - 💼 **LinkedIn Post** — Professional text-based storytelling
-- 🎵 **TikTok** — Raw, authentic, hook-heavy
-
-### 📱 Smart Vertical Framing
-- Face tracking via MediaPipe
-- Dynamic speaker centering for 9:16 crops
-- Smooth frame transitions (no jitter)
 
 ---
 
@@ -96,62 +90,57 @@ Convert the same clip into platform-optimized formats:
 ### Backend
 | Technology | Purpose |
 |-----------|---------|
-| **FastAPI** | High-performance Python API framework |
-| **OpenAI Whisper** | Industry-standard speech-to-text |
-| **Librosa** | Audio feature extraction & analysis |
-| **MoviePy** | Video editing & clip extraction |
-| **MediaPipe** | Face detection & tracking |
+| **Node.js & Express** | High-performance server and API handler |
+| **FFmpeg / ffprobe** | Video duration extraction & audio processing |
+| **Multer** | Robust file upload handling |
 
 ### AI Layer
 | Technology | Purpose |
 |-----------|---------|
-| **Google Gemini 2.0** | Hook generation, persona adaptation, virality analysis |
-| **NLP Pipeline** | Keyword detection, sentiment analysis, emotion scoring |
+| **Google Gemini 2.5 Flash** | Audio transcription, hook generation, persona adaptation, virality analysis, and story building |
+| **@google/generative-ai** | Official Google AI SDK for Node.js |
 
 ### Frontend
 | Technology | Purpose |
 |-----------|---------|
 | **Vanilla JS** | Zero-dependency, fast loading |
 | **Canvas API** | Custom heatmap & waveform visualizations |
-| **CSS3** | Glassmorphism, animations, responsive design |
+| **CSS3** | Glassmorphism, animations, responsive design, SVG platform icons |
 
 ---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.9+
-- FFmpeg (for audio extraction)
-- Google Gemini API Key (optional, for AI features)
+- Node.js (v18+)
+- FFmpeg installed and added to system PATH
+- Google Gemini API Key
 
 ### Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/attentionx.git
+git clone https://github.com/Kr1ShiV/attentionx.git
 cd attentionx
 
-# 2. Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+# 2. Install dependencies
+npm install
 
-# 3. Install dependencies
-cd backend
-pip install -r requirements.txt
+# 3. Set API key
+# On Windows:
+set GEMINI_API_KEY=your_gemini_api_key
+# On Mac/Linux:
+export GEMINI_API_KEY="your_gemini_api_key"
 
-# 4. Set API key (optional)
-export GEMINI_API_KEY="your-api-key-here"
-# On Windows: set GEMINI_API_KEY=your-api-key-here
-
-# 5. Run the server
-python main.py
+# 4. Start the server
+node server.js
 ```
 
 ### Access the App
-Open your browser: **http://localhost:8000**
+Open your browser: **http://localhost:3000**
 
 ### Try Without Upload
-Click **"🎮 Try Demo"** button to load sample data and explore all features immediately.
+Click **"🎮 Try Demo"** button to load sample data and explore all features immediately without using API quotas.
 
 ---
 
@@ -159,22 +148,8 @@ Click **"🎮 Try Demo"** button to load sample data and explore all features im
 
 ```
 attentionx/
-├── backend/
-│   ├── main.py                  # FastAPI app with all endpoints
-│   ├── config.py                # Configuration & scoring weights
-│   ├── requirements.txt         # Python dependencies
-│   ├── services/
-│   │   ├── transcription.py     # Whisper/Gemini speech-to-text
-│   │   ├── audio_analyzer.py    # Librosa audio feature extraction
-│   │   ├── virality_engine.py   # Multi-signal virality prediction
-│   │   ├── hook_generator.py    # AI + pattern-based hook generation
-│   │   ├── persona_adapter.py   # Audience persona content rewriting
-│   │   ├── clip_extractor.py    # Video clipping with MoviePy
-│   │   ├── story_builder.py     # Narrative arc builder
-│   │   ├── remix_engine.py      # Multi-platform content optimizer
-│   │   └── face_tracker.py      # MediaPipe face tracking
-│   └── models/
-│       └── schemas.py           # Pydantic data models
+├── server.js                    # Express app, Gemini AI logic, FFmpeg processing
+├── package.json                 # Node.js dependencies
 ├── frontend/
 │   ├── index.html               # Main dashboard UI
 │   ├── css/styles.css           # Premium dark theme
@@ -182,8 +157,7 @@ attentionx/
 │       ├── app.js               # Core application logic
 │       ├── api.js               # API client
 │       └── visualizations.js    # Canvas heatmap & waveform
-├── uploads/                     # Uploaded video files
-├── outputs/                     # Processed clips
+├── uploads/                     # Temp storage for uploaded video files
 ├── README.md
 └── DEMO_FLOW.md                 # Demo presentation script
 ```
@@ -193,43 +167,32 @@ attentionx/
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    Frontend (HTML/CSS/JS)                │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐  │
-│  │ Upload   │ │Dashboard │ │  Clips   │ │   Remix   │  │
-│  │ Zone     │ │ Heatmap  │ │  Grid    │ │   Mode    │  │
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └─────┬─────┘  │
-│       │             │            │              │        │
-└───────┼─────────────┼────────────┼──────────────┼────────┘
+┌────────────────────────────────────────────────────────────┐
+│                   Frontend (HTML/CSS/JS)                   │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌───────────────┐  │
+│  │ Upload   │ │Dashboard │ │  Clips   │ │  Remix Mode   │  │
+│  │ Zone     │ │ Heatmap  │ │  Grid    │ │ (IG, YT, IN)  │  │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └───────┬───────┘  │
+│       │             │            │              │          │
+└───────┼─────────────┼────────────┼──────────────┼──────────┘
         │             │            │              │
         ▼             ▼            ▼              ▼
-┌─────────────────── FastAPI Backend ──────────────────────┐
-│                                                          │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐              │
-│  │Transcribe│  │  Audio   │  │  Face    │              │
-│  │(Whisper) │  │ Analyzer │  │ Tracker  │              │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘              │
-│       │              │             │                     │
-│       ▼              ▼             ▼                     │
-│  ┌──────────────────────────────────────┐               │
-│  │      Virality Prediction Engine      │               │
-│  │  (Emotion + Energy + Keywords +      │               │
-│  │   Speech Rate + Pitch + Novelty)     │               │
-│  └───────────────┬──────────────────────┘               │
-│                  │                                       │
-│     ┌────────────┼────────────┐                         │
-│     ▼            ▼            ▼                         │
-│  ┌──────┐  ┌──────────┐  ┌───────┐                     │
-│  │Hooks │  │ Persona  │  │ Remix │                     │
-│  │Engine│  │ Adapter  │  │Engine │                     │
-│  └──────┘  └──────────┘  └───────┘                     │
-│                                                          │
-│  ┌──────────┐  ┌──────────┐                             │
-│  │  Story   │  │  Clip    │                             │
-│  │ Builder  │  │Extractor │                             │
-│  └──────────┘  └──────────┘                             │
-│                                                          │
-└─────────────────── Gemini AI API ────────────────────────┘
+┌────────────────── Node.js / Express Server ─────────────────┐
+│                                                             │
+│  ┌──────────┐  ┌───────────────┐  ┌──────────────────────┐  │
+│  │  Multer  │  │ FFmpeg System │  │ Gemini API SDK       │  │
+│  │ (Upload) │  │ (Duration/Audio)││ (gemini-2.5-flash)   │  │
+│  └────┬─────┘  └───────┬───────┘  └──────────┬───────────┘  │
+│       │                │                     │              │
+│       ▼                ▼                     ▼              │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │            AttentionX AI Orchestration                │  │
+│  │  - Video processing & audio extraction                │  │
+│  │  - Prompt engineering & fallback logic                │  │
+│  │  - Virality scoring (0-100) based on transcript       │  │
+│  │  - Persona adaptation & Story Arc building            │  │
+│  └───────────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
